@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#3B1790">
+<meta name="color-scheme" content="light">
+<title>English 8 Mid-term Test (Version 2) – Aurelia Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1E1238;--muted:#675C8C;--bg:#F5F2FE;--card:#fff;--line:#E3DBF6;
+  --p:#5B2BD0;--p2:#7C4DEB;--pd:#3B1790;--pdd:#241060;--lav:#EEE8FF;--lav2:#D9CCFF;--gold:#B8924A;
+  --ok:#0F7F5A;--okbg:#E5F6EE;--no:#C12E4A;--nobg:#FDECEF;--wn:#A86A0B;--wnbg:#FFF4DC;
+  --sh1:0 1px 2px rgba(36,16,96,.06),0 10px 28px -14px rgba(36,16,96,.22);
+  --sh2:0 24px 60px -24px rgba(36,16,96,.45);
+  --r:20px;--hh:68px;
+  --f:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100dvh;display:flex;flex-direction:column;background:var(--bg);color:var(--ink);font:500 15.5px/1.65 var(--f);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+.hide{display:none!important}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--p2);outline-offset:2px}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid transparent;border-radius:14px;padding:12px 22px;min-height:46px;font-weight:700;font-size:14.5px;letter-spacing:.01em;transition:transform .15s,box-shadow .2s,background .2s,border-color .2s}
+.btn:active{transform:scale(.98)}
+.btn.pri{background:linear-gradient(135deg,var(--p),var(--pd));color:#fff;box-shadow:0 12px 24px -14px var(--p)}
+.btn.pri:hover{box-shadow:0 16px 30px -12px var(--p);transform:translateY(-1px)}
+.btn.sec{background:#fff;color:var(--pd);border-color:var(--line)}
+.btn.sec:hover{border-color:var(--p2);background:var(--lav)}
+.btn.ghost{background:transparent;color:var(--pd)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.btn.lg{min-height:54px;font-size:16px;width:100%}
+
+/* ---------- start screen ---------- */
+#start{flex:1;display:grid;grid-template-columns:1.1fr .9fr;min-height:100dvh}
+.hero{position:relative;overflow:hidden;color:#fff;padding:clamp(28px,5vw,72px);display:flex;flex-direction:column;justify-content:space-between;gap:36px;background:radial-gradient(900px 520px at 90% -10%,rgba(167,139,250,.55),transparent 60%),radial-gradient(600px 400px at -10% 110%,rgba(124,77,235,.55),transparent 60%),linear-gradient(160deg,#2A1170,#3B1790 55%,#241060)}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px) 0 0/44px 44px,linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px) 0 0/44px 44px;pointer-events:none;mask-image:linear-gradient(#000,transparent 85%)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.28em;font-size:13px;position:relative}
+.brand .mk{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);font-size:17px;letter-spacing:0}
+.brand em{font-style:normal;font-weight:500;opacity:.7}
+.hero .mid{position:relative}
+.eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#CDBBFF}
+.hero h1{font-size:clamp(38px,5.6vw,72px);line-height:1.04;letter-spacing:-.035em;font-weight:800;margin:14px 0 18px}
+.hero p.lead{font-size:16.5px;max-width:480px;color:#E4DAFF;margin:0}
+.stats{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:520px}
+.stats div{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:14px 8px;text-align:center;backdrop-filter:blur(6px)}
+.stats b{display:block;font-size:26px;font-weight:800;letter-spacing:-.03em}
+.stats span{font-size:10px;letter-spacing:.14em;font-weight:600;color:#CDBBFF}
+.side{display:flex;align-items:center;justify-content:center;padding:clamp(20px,4vw,56px);background:var(--bg)}
+.panel{width:100%;max-width:470px;display:grid;gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:clamp(20px,3vw,32px);box-shadow:var(--sh1)}
+.card h2{margin:0 0 4px;font-size:21px;letter-spacing:-.02em}
+.card p.sub{margin:0 0 18px;color:var(--muted);font-size:14px}
+label.fl{display:block;font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--p)}
+.inp{width:100%;margin:8px 0 18px;padding:15px 16px;border-radius:14px;border:1.5px solid var(--line);background:#FCFBFF;font-size:16px;outline:0;transition:border-color .2s,box-shadow .2s}
+.inp:focus{border-color:var(--p2);box-shadow:0 0 0 4px rgba(124,77,235,.18)}
+.inp.err{border-color:var(--no);box-shadow:0 0 0 4px rgba(193,46,74,.12)}
+.rules{margin:0;padding:0;list-style:none;display:grid;gap:10px;font-size:13.5px;color:var(--muted)}
+.rules li{display:flex;gap:10px;align-items:flex-start}
+.rules i{flex:none;width:22px;height:22px;border-radius:7px;background:var(--lav);color:var(--p);display:grid;place-items:center;font-style:normal;font-weight:800;font-size:12px}
+.rules b{color:var(--ink)}
+.resume{border-color:var(--p2);background:linear-gradient(135deg,#fff,var(--lav))}
+.resume .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.resume .row .btn{flex:1;min-width:130px}
+
+/* ---------- exam shell ---------- */
+.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .in{max-width:1240px;margin:0 auto;padding:10px clamp(14px,3vw,32px);display:flex;align-items:center;gap:14px}
+.top .brand{color:var(--pd);font-size:12px}.top .brand .mk{background:var(--lav);border-color:var(--lav2);width:34px;height:34px;font-size:15px}
+.ttl{font-weight:700;font-size:14px;color:var(--muted)}
+.grow{flex:1}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font-weight:700;font-size:13px;color:var(--pd)}
+#tmw{font-variant-numeric:tabular-nums;border-color:var(--lav2);background:var(--lav)}
+#tmw.low{background:var(--no);border-color:var(--no);color:#fff;animation:bl 1s infinite}
+#tmw svg{display:block}
+@keyframes bl{50%{opacity:.7}}
+.tabs{max-width:1240px;margin:0 auto;padding:0 clamp(14px,3vw,32px) 10px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:999px;padding:8px 14px;font-weight:700;font-size:12.5px;display:flex;gap:8px;align-items:center;white-space:nowrap;transition:all .2s}
+.tabs button small{font-size:10.5px;padding:2px 7px;border-radius:99px;background:var(--lav);color:var(--p)}
+.tabs button:hover{border-color:var(--p2);color:var(--pd)}
+.tabs button.on{background:linear-gradient(135deg,var(--p),var(--pd));border-color:transparent;color:#fff}
+.tabs button.on small{background:rgba(255,255,255,.2);color:#fff}
+.tabs button.full small{background:var(--okbg);color:var(--ok)}
+.tabs button.on.full small{background:rgba(255,255,255,.28);color:#fff}
+main{flex:1;width:100%;max-width:1240px;margin:0 auto;padding:clamp(18px,3vw,34px) clamp(14px,3vw,32px) 120px}
+.ph{margin-bottom:18px}
+.ph h2{font-size:clamp(24px,3.2vw,34px);letter-spacing:-.03em;margin:6px 0 0;line-height:1.15}
+.sec{margin:20px 0 12px}.sec h3{margin:0 0 2px;font-size:17px;letter-spacing:-.01em;color:var(--pd)}.sec p{margin:0;color:var(--muted);font-size:14px}
+.stage{animation:in .45s cubic-bezier(.2,.8,.2,1) both}
+.stage.bk{animation-name:inb}
+@keyframes in{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+@keyframes inb{from{opacity:0;transform:translateX(-26px)}to{opacity:1;transform:none}}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+.col{display:grid;gap:14px}
+.split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:24px;align-items:start}
+.pass{position:sticky;top:calc(var(--hh) + 12px);max-height:calc(100dvh - var(--hh) - 120px);overflow:auto;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--sh1);font-size:16.5px;line-height:1.85;scrollbar-width:thin}
+.pass h4{margin:0 0 10px;font-size:13px;letter-spacing:.2em;color:var(--p);text-transform:uppercase}
+.pass b.g{display:inline-block;min-width:34px;text-align:center;background:var(--lav);color:var(--pd);border-radius:8px;padding:0 6px;font-size:14px;line-height:1.6}
+.pass.static{position:static;max-height:none;margin-bottom:18px}
+
+/* ---------- question card ---------- */
+.q{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;box-shadow:var(--sh1);scroll-margin-top:calc(var(--hh) + 16px);transition:border-color .2s,box-shadow .2s}
+.q.done{border-color:var(--lav2)}
+.qh{display:flex;gap:12px;align-items:flex-start}
+.qn{flex:none;min-width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,var(--p),var(--pd));color:#fff;font-weight:800;font-size:14px}
+.qt{flex:1;font-weight:600;font-size:16px;padding-top:4px;overflow-wrap:anywhere}
+.qt .bl{color:var(--p);letter-spacing:.1em}.qt u{text-decoration-thickness:2px;text-underline-offset:4px;text-decoration-color:var(--p2)}
+.flag{flex:none;border:1px solid var(--line);background:#fff;border-radius:10px;width:34px;height:34px;display:grid;place-items:center;color:var(--muted);font-size:14px;transition:all .2s}
+.flag:hover{border-color:var(--gold);color:var(--gold)}
+.flag[aria-pressed=true]{background:var(--wnbg);border-color:var(--gold);color:var(--wn)}
+.opts{margin:12px 0 0;display:grid;gap:9px}
+.opt{position:relative;display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:#FCFBFF;cursor:pointer;transition:border-color .15s,background .2s,box-shadow .2s,transform .12s}
+.opt:hover{border-color:var(--p2);background:var(--lav)}
+.opt:active{transform:scale(.99)}
+.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.opt .lt{flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--lav2);display:grid;place-items:center;font-size:12.5px;font-weight:800;color:var(--p);background:#fff;transition:all .2s}
+.opt:has(input:checked){border-color:var(--p);background:var(--lav);box-shadow:0 0 0 1px var(--p) inset}
+.opt:has(input:checked) .lt{background:var(--p);border-color:var(--p);color:#fff}
+.opt:has(input:focus-visible){outline:3px solid var(--p2);outline-offset:2px}
+.fld{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;margin-top:12px;padding:4px 14px;border:1.5px solid var(--line);border-radius:14px;background:#FCFBFF;transition:border-color .2s,box-shadow .2s}
+.fld:focus-within{border-color:var(--p2);box-shadow:0 0 0 4px rgba(124,77,235,.16)}
+.fld .pf{font-weight:800;color:var(--p);padding:9px 0;user-select:none}
+.fld input{flex:1 1 160px;border:0;outline:0;background:transparent;padding:11px 0;font-size:16px}
+.sign{display:grid;place-items:center;margin:12px 0 0;padding:14px;border-radius:14px;background:linear-gradient(135deg,var(--lav),#E4DAFF)}
+.sign svg{width:100%;max-width:320px;height:auto;filter:drop-shadow(0 8px 14px rgba(40,20,90,.22))}
+
+/* review states */
+.q.r-ok{border-color:#9AD9BF}.q.r-bad{border-color:#F0A9B6}.q.r-blank{border-color:#EBCB86}
+.badge{flex:none;font-size:11px;font-weight:800;letter-spacing:.06em;padding:6px 10px;border-radius:99px;white-space:nowrap}
+.badge.ok{background:var(--okbg);color:var(--ok)}.badge.bad{background:var(--nobg);color:var(--no)}.badge.blank{background:var(--wnbg);color:var(--wn)}
+.opt.rv{cursor:default}.opt.rv:hover{background:#FCFBFF;border-color:var(--line)}
+.opt.rv.c{border-color:var(--ok);background:var(--okbg)}.opt.rv.c .lt{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.rv.w{border-color:var(--no);background:var(--nobg)}.opt.rv.w .lt{background:var(--no);border-color:var(--no);color:#fff}
+.opt .tag{margin-left:auto;font-size:11px;font-weight:800;white-space:nowrap;padding-left:8px}
+.opt.rv.c .tag{color:var(--ok)}.opt.rv.w .tag{color:var(--no)}
+.exp{margin-top:12px;border-radius:14px;background:var(--lav);padding:12px 16px;font-size:14px;line-height:1.7}
+.exp b{color:var(--pd)}
+.ansbox{margin-top:12px;display:grid;gap:8px;font-size:15px}
+.ansbox div{border-radius:12px;padding:10px 14px;border:1px solid var(--line);background:#FCFBFF}
+.ansbox .you.ok{background:var(--okbg);border-color:#9AD9BF}.ansbox .you.bad{background:var(--nobg);border-color:#F0A9B6}.ansbox .you.blank{background:var(--wnbg);border-color:#EBCB86}
+.ansbox small{display:block;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- listening ---------- */
+.aud{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;background:linear-gradient(135deg,#fff,var(--lav));border:1px solid var(--lav2);border-radius:22px;padding:18px 22px;margin:4px 0 18px;box-shadow:var(--sh1)}
+.eq{display:flex;gap:4px;align-items:center;height:48px}
+.eq i{width:5px;height:12px;border-radius:3px;background:linear-gradient(var(--p2),var(--pd))}
+.eq.on i{animation:eq .9s ease-in-out infinite alternate}
+.eq i:nth-child(2){animation-delay:.1s}.eq i:nth-child(3){animation-delay:.25s}.eq i:nth-child(4){animation-delay:.05s}.eq i:nth-child(5){animation-delay:.35s}.eq i:nth-child(6){animation-delay:.15s}.eq i:nth-child(7){animation-delay:.3s}
+@keyframes eq{to{height:44px}}
+.abar{height:6px;background:var(--lav2);border-radius:9px;overflow:hidden;margin:10px 0 6px}
+.abar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--p2),var(--pd));transition:width .4s}
+.sm{font-size:13px;color:var(--muted)}
+
+/* ---------- dock ---------- */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:10px clamp(14px,3vw,32px) calc(10px + env(safe-area-inset-bottom))}
+.dock .in{max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.bar{flex:1;display:grid;gap:5px}
+.bar .tr{height:7px;background:var(--lav);border-radius:9px;overflow:hidden}
+.bar .tr i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--p2),var(--pd));border-radius:9px;transition:width .35s}
+.bar span{font-size:11.5px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+
+/* ---------- dialogs ---------- */
+dialog{border:0;border-radius:24px;padding:0;max-width:min(560px,calc(100vw - 28px));width:100%;box-shadow:var(--sh2);color:var(--ink);background:#fff}
+dialog::backdrop{background:rgba(30,18,56,.5);backdrop-filter:blur(4px)}
+.dg{padding:26px}
+.dg h3{margin:0 0 8px;font-size:21px;letter-spacing:-.02em}
+.dg p{margin:0 0 16px;color:var(--muted);font-size:14.5px}
+.dg .row{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.mapg{display:grid;grid-template-columns:repeat(auto-fill,minmax(42px,1fr));gap:8px;margin:8px 0 14px}
+.mapg button{height:42px;border-radius:12px;border:1.5px solid var(--line);background:#fff;font-weight:700;font-size:13px;color:var(--muted);position:relative;transition:all .15s}
+.mapg button:hover{border-color:var(--p2)}
+.mapg button.d{background:var(--lav);border-color:var(--p2);color:var(--pd)}
+.mapg button.cur{box-shadow:0 0 0 3px rgba(124,77,235,.35)}
+.mapg button.f:after{content:"";position:absolute;top:4px;right:4px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.mh{font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--p);margin-top:10px}
+.leg{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-bottom:6px}
+.leg i{display:inline-block;width:12px;height:12px;border-radius:4px;vertical-align:-1px;margin-right:5px;border:1.5px solid var(--line)}
+
+/* ---------- results ---------- */
+#res{max-width:1100px;margin:0 auto;width:100%;padding:clamp(18px,3vw,40px) clamp(14px,3vw,32px) 60px}
+.rhero{position:relative;overflow:hidden;border-radius:28px;color:#fff;padding:clamp(22px,4vw,44px);background:radial-gradient(700px 400px at 100% 0,rgba(167,139,250,.5),transparent 60%),linear-gradient(150deg,#2A1170,#3B1790);box-shadow:var(--sh2);display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,4vw,44px);align-items:center}
+.ring{position:relative;width:176px;height:176px}
+.ring svg{transform:rotate(-90deg);display:block}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:48px;font-weight:800;letter-spacing:-.04em}
+.ring small{position:absolute;left:0;right:0;bottom:36px;text-align:center;font-size:12px;font-weight:700;letter-spacing:.2em;color:#CDBBFF}
+.rhero h2{margin:6px 0 4px;font-size:clamp(22px,3vw,30px);letter-spacing:-.03em}
+.rhero p{margin:0;color:#DCCFFF}
+.verdict{display:inline-block;margin-top:12px;padding:6px 14px;border-radius:99px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);font-weight:700;font-size:13px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--sh1)}
+.kpi span{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.kpi b{display:block;font-size:28px;font-weight:800;letter-spacing:-.03em;margin-top:2px}
+.kpi.ok b{color:var(--ok)}.kpi.bad b{color:var(--no)}.kpi.blank b{color:var(--wn)}.kpi.pc b{color:var(--p)}
+.kpi small{color:var(--muted);font-size:12px}
+.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:20px;font-size:13px;color:#DCCFFF}
+.meta div{padding-right:12px}.meta b{display:block;color:#fff;font-size:14px}
+.bars{display:grid;gap:12px;margin-top:14px}
+.br{display:grid;grid-template-columns:150px 1fr 56px;gap:14px;align-items:center;font-size:14px;font-weight:600}
+.br div{height:10px;background:var(--lav);border-radius:9px;overflow:hidden}
+.br i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--p2),var(--pd));border-radius:9px;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.br b{text-align:right;font-variant-numeric:tabular-nums}
+.ctl{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 4px;position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0}
+.chips button{border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:8px 16px;font-weight:700;font-size:13px;color:var(--muted);transition:all .2s}
+.chips button.on{background:var(--pd);border-color:var(--pd);color:#fff}
+.rsec{margin:26px 0 10px}.rsec h3{margin:0;font-size:19px;letter-spacing:-.02em;color:var(--pd)}.rsec p{margin:2px 0 0;color:var(--muted);font-size:13.5px}
+.tr-box{margin-bottom:14px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:6px 18px;box-shadow:var(--sh1)}
+.tr-box summary{cursor:pointer;font-weight:700;padding:12px 0;color:var(--pd)}
+.tr-box p{margin:0 0 8px;font-size:14.5px}.tr-box p b{color:var(--p)}
+.empty{padding:28px;text-align:center;color:var(--muted);background:#fff;border:1px dashed var(--lav2);border-radius:var(--r)}
+.rv{animation:in .5s cubic-bezier(.2,.8,.2,1) both}
+
+footer{text-align:center;padding:22px 16px calc(22px + env(safe-area-inset-bottom));color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);background:#fff;line-height:1.8}
+footer b{color:var(--pd);letter-spacing:.3em;font-size:12px}
+body.ex footer{margin-bottom:76px}
+
+/* ---------- responsive ---------- */
+@media(max-width:980px){
+  #start{grid-template-columns:1fr;min-height:0}
+  .hero{padding:28px 22px;gap:26px}
+  .hero h1{font-size:clamp(34px,10vw,52px)}
+  .side{padding:20px 14px 28px}
+  .split{grid-template-columns:1fr;gap:12px}
+  .pass{top:calc(var(--hh) + 6px);max-height:34dvh;padding:16px;font-size:15.5px;z-index:5}
+  .split .q{scroll-margin-top:calc(var(--hh) + 34dvh + 18px)}
+  .grid2{grid-template-columns:1fr}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:720px){
+  .ttl{display:none}
+  .aud{grid-template-columns:1fr}.aud .btn{width:100%}.eq{justify-content:center}
+  .rhero{grid-template-columns:1fr;text-align:center;justify-items:center}
+  .meta{grid-template-columns:1fr;gap:8px;text-align:left}
+  .br{grid-template-columns:96px 1fr 46px;gap:10px;font-size:13px}
+  .q{padding:14px}
+  .dock .in{gap:8px}.dock .btn{padding:10px 14px;font-size:13.5px;min-height:44px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+@media print{
+  @page{size:A4;margin:12mm}
+  .top,.dock,footer,.ctl,.chips,.flag{display:none!important}
+  body{background:#fff}
+  .rhero{background:#3B1790!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .q,.kpi,.tr-box{box-shadow:none;break-inside:avoid}
+  .rv{animation:none}
+}
+</style>
+</head>
+<body>
+
+<!-- START -->
+<section id="start">
+  <div class="hero">
+    <div class="brand"><span class="mk">A</span><span>AURELIA<em> ACADEMY</em></span></div>
+    <div class="mid">
+      <div class="eyebrow">Version 2 · Global Success · Units 1, 2 &amp; 3</div>
+      <h1>English 8<br>Mid-term Test</h1>
+      <p class="lead">Leisure Time · Life in the Countryside · Teenagers. Read each instruction carefully and answer all 50 questions.</p>
+    </div>
+    <div class="stats"><div><b>50</b><span>QUESTIONS</span></div><div><b>8</b><span>PARTS</span></div><div><b>60'</b><span>MINUTES</span></div><div><b>10</b><span>MARKS</span></div></div>
+  </div>
+  <div class="side"><div class="panel">
+    <div id="resume" class="card resume hide"></div>
+    <form id="form" class="card" novalidate>
+      <h2>Candidate details</h2>
+      <p class="sub">Enter your full name and class. The timer starts as soon as you press Start.</p>
+      <label class="fl" for="nm">Full name and class</label>
+      <input class="inp" id="nm" type="text" placeholder="e.g. Nguyen Van A – 8A" autocomplete="name" maxlength="80">
+      <button class="btn pri lg" id="go" type="submit">Start the test →</button>
+    </form>
+    <div class="card">
+      <ul class="rules">
+        <li><i>1</i><span><b>Questions 1–42</b> are multiple choice: 42 × 0.2 = 8.4 points.</span></li>
+        <li><i>2</i><span><b>Questions 43–50</b> are writing: 8 × 0.2 = 1.6 points. Spelling and grammar must be correct.</span></li>
+        <li><i>3</i><span><b>Part A · Listening:</b> you can play the recording twice. Turn your sound on.</span></li>
+        <li><i>4</i><span>Your answers are saved automatically. If the page closes, you can continue on this device.</span></li>
+      </ul>
+    </div>
+  </div></div>
+</section>
+
+<!-- EXAM -->
+<div id="examUI" class="hide">
+  <header class="top">
+    <div class="in">
+      <span class="brand"><span class="mk">A</span><span>AURELIA</span></span>
+      <span class="ttl">English 8 · Mid-term Test · Version 2</span>
+      <span class="grow"></span>
+      <button class="pill" id="mapBtn" type="button" aria-label="Open question map">▦ <span id="prog">0/50</span></button>
+      <span class="pill" id="tmw" role="timer" aria-live="off"><svg viewBox="0 0 44 44" width="22" height="22" aria-hidden="true"><circle cx="22" cy="22" r="18" fill="none" stroke="currentColor" stroke-opacity=".2" stroke-width="5"/><circle id="tc" cx="22" cy="22" r="18" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="0" transform="rotate(-90 22 22)"/></svg><span id="tm">60:00</span></span>
+    </div>
+    <nav class="tabs" id="tabs" aria-label="Sections"></nav>
+  </header>
+  <main><div id="body"></div></main>
+  <div class="dock"><div class="in">
+    <button class="btn sec" id="prev" type="button">← Previous</button>
+    <div class="bar"><div class="tr"><i id="pb"></i></div><span id="pbt">0 of 50 answered</span></div>
+    <button class="btn sec" id="next" type="button">Next →</button>
+    <button class="btn pri" id="sub" type="button">Submit</button>
+  </div></div>
+</div>
+
+<!-- RESULTS -->
+<section id="res" class="hide" aria-live="polite"></section>
+
+<footer><b>AURELIA ACADEMY</b><br>Contact: 0964 964 264 | Ms. Angie<br>© 2026 Aurelia Academy. All rights reserved.</footer>
+
+<dialog id="dMap"><div class="dg"><h3>Question map</h3><p>Tap a number to jump to that question. A gold dot marks a question you flagged for review.</p>
+  <div class="leg"><span><i style="background:var(--lav);border-color:var(--p2)"></i>Answered</span><span><i></i>Not answered</span><span><i style="background:var(--gold);border-radius:50%"></i>Flagged</span></div>
+  <div id="mapBody"></div><div class="row"><button class="btn sec" data-close type="button">Close</button></div></div></dialog>
+<dialog id="dSub"><div class="dg"><h3>Submit your test?</h3><p id="dSubT"></p><div class="row"><button class="btn sec" data-close type="button">Keep working</button><button class="btn pri" id="dSubOk" type="button">Submit now</button></div></div></dialog>
+<dialog id="dRe"><div class="dg"><h3>Retake the test?</h3><p>Your current answers and result will be cleared and the timer will reset.</p><div class="row"><button class="btn sec" data-close type="button">Cancel</button><button class="btn pri" id="dReOk" type="button">Retake</button></div></div></dialog>
+<dialog id="dMsg"><div class="dg"><h3 id="dMsgH"></h3><p id="dMsgT"></p><div class="row"><button class="btn pri" data-close type="button">OK</button></div></div></dialog>
+
+<script>
+"use strict";
+const $=s=>document.querySelector(s);
+const TIME=60,KEY='aurelia_e8_mid_ver2_v1',AUDIO_SRC='';/* optional: URL of an MP3 of the dialogue; leave empty to use built-in British English voices */
+const L='ABCD',FONT='Montserrat,system-ui,"Segoe UI",Roboto,Arial,sans-serif';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const strip=s=>s.replace(/<\/?u>/g,'');
+
+/* ================= CONTENT ================= */
+const SCRIPT=[['T','Hi, Hoa. What do you like doing after school?'],['E','I enjoy taking photos, especially when I visit my grandparents in the countryside. What about you?'],['T','Photography isn’t really my thing. I enjoy playing chess with my brother. Where do you usually take your photos?'],['E','Mostly in the countryside. There are rice fields, trees and lots of beautiful views.'],['T','Do you help your grandparents when you visit them?'],['E','Yes. I often help my grandmother feed the chickens. Then I sometimes water the vegetables in her garden.'],['T','It sounds nice. What do you like most about your village?'],['E','I like the quiet environment. It is very different from the busy streets in the city.'],['T','You sound a little worried today. Is everything okay?'],['E','I have too much homework this week, so I feel stressed. I don’t have much time for my hobbies.'],['T','Maybe you can make a simple plan for your week. Do your homework first, take short breaks, and leave some time for activities you enjoy.'],['E','That sounds helpful. I’ll try to organise my time better. Thanks, Peter.'],['T','You’re welcome. Remember to get enough sleep, too!']];
+const NAME={T:'Peter',E:'Hoa'};
+
+const SG={
+34:`<svg viewBox="0 0 360 200" role="img" aria-label="Sign: Please switch off your mobile phone"><rect x="5" y="5" width="350" height="190" rx="14" fill="#fff" stroke="#C62828" stroke-width="6"/><rect x="60" y="48" width="56" height="104" rx="10" fill="#222"/><rect x="67" y="62" width="42" height="68" rx="3" fill="#fff"/><circle cx="88" cy="141" r="4" fill="#fff"/><circle cx="88" cy="100" r="64" fill="none" stroke="#C62828" stroke-width="9"/><path d="M43 55L133 145" stroke="#C62828" stroke-width="9" stroke-linecap="round"/><g font-family="Arial,sans-serif" font-weight="900" fill="#1b1b1b"><text x="166" y="62" font-size="20">PLEASE</text><text x="166" y="94" font-size="24">SWITCH OFF</text><text x="166" y="124" font-size="24">YOUR MOBILE</text><text x="166" y="154" font-size="24">PHONE</text></g></svg>`,
+35:`<svg viewBox="0 0 400 240" role="img" aria-label="Notice: School Gardening Club. Meet at the school garden at 3:30 p.m. on Friday. Bring a small pair of gloves."><rect x="5" y="5" width="390" height="230" rx="14" fill="#fff" stroke="#2E7D32" stroke-width="5"/><path d="M5 19a14 14 0 0 1 14-14h362a14 14 0 0 1 14 14v46H5z" fill="#2E7D32"/><text x="200" y="44" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="23" fill="#fff">SCHOOL GARDENING CLUB</text><g font-family="Arial,sans-serif" fill="#1b1b1b" text-anchor="middle"><text x="200" y="110" font-weight="800" font-size="21">Meet at the school garden</text><text x="200" y="148" font-weight="800" font-size="21">at 3:30 p.m. on Friday.</text><text x="200" y="198" font-size="20">Bring a small pair of gloves.</text></g></svg>`,
+36:`<svg viewBox="0 0 360 200" role="img" aria-label="Sign: Do not litter"><rect x="5" y="5" width="350" height="190" rx="14" fill="#fff" stroke="#C62828" stroke-width="6"/><g fill="#222"><path d="M66 78h44l-5 54a6 6 0 0 1-6 5H77a6 6 0 0 1-6-5z"/><rect x="60" y="68" width="56" height="8" rx="3"/><rect x="78" y="60" width="20" height="8" rx="3"/></g><circle cx="88" cy="100" r="64" fill="none" stroke="#C62828" stroke-width="9"/><path d="M43 55L133 145" stroke="#C62828" stroke-width="9" stroke-linecap="round"/><g font-family="Arial,sans-serif" font-weight="900" fill="#1b1b1b"><text x="166" y="92" font-size="30">DO NOT</text><text x="166" y="132" font-size="30">LITTER</text></g></svg>`,
+37:`<svg viewBox="0 0 400 240" role="img" aria-label="Notice: Teen Wellness Talk. Managing Stress Before Exams. Wednesday, 4 p.m., Room 12."><rect x="5" y="5" width="390" height="230" rx="14" fill="#fff" stroke="#4C1D95" stroke-width="5"/><path d="M5 19a14 14 0 0 1 14-14h362a14 14 0 0 1 14 14v46H5z" fill="#4C1D95"/><text x="200" y="44" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="23" fill="#fff">TEEN WELLNESS TALK</text><g font-family="Arial,sans-serif" fill="#1b1b1b" text-anchor="middle"><text x="200" y="108" font-weight="800" font-size="22">“Managing Stress Before Exams”</text><text x="200" y="170" font-size="21">Wednesday, 4 p.m.</text><text x="200" y="202" font-size="21">Room 12</text></g></svg>`};
+
+/* mc(number, stem, "A|B|C|D", correct letter, Vietnamese explanation) */
+const mc=(n,s,o,a,e)=>({n,s,o:o.split('|'),a:L.indexOf(a),e,k:'mc'});
+const Q=[
+mc(1,'What does Peter enjoy doing after school?','taking photos|playing chess|cooking|collecting coins','B','Peter nói: “Photography isn’t really my thing. I enjoy playing chess with my brother.” → Peter thích chơi cờ vua (còn người thích chụp ảnh là Hoa).'),
+mc(2,'Where does Hoa usually take photos?','in shopping centres|in the countryside|at school only|at the cinema','B','Hoa nói: “Mostly in the countryside.” → chủ yếu ở vùng nông thôn.'),
+mc(3,'What does Hoa help her grandmother do?','feed the chickens|sell clothes|drive a tractor|make videos','A','Hoa nói: “I often help my grandmother feed the chickens.” → cho gà ăn.'),
+mc(4,'What does Hoa like about her village?','the heavy traffic|the tall buildings|the quiet environment|the crowded streets','C','Hoa nói: “I like the quiet environment.” → thích môi trường yên tĩnh.'),
+mc(5,'Why is Hoa worried?','She has too much homework.|She has lost her phone.|She cannot ride a bike.|She dislikes her friends.','A','Hoa nói: “I have too much homework this week, so I feel stressed.” → quá nhiều bài tập.'),
+mc(6,'What does Peter suggest?','Studying all night|Never using the internet|Planning her time and taking breaks|Giving up all her hobbies','C','Peter gợi ý: “make a simple plan… take short breaks” → lập kế hoạch thời gian và nghỉ giải lao.'),
+mc(7,'Choose the word whose underlined part is pronounced differently.','watch<u>ed</u>|help<u>ed</u>|need<u>ed</u>|laugh<u>ed</u>','C','Đuôi -ed đọc /ɪd/ sau âm /t/ và /d/: needed /ˈniːdɪd/. watched, helped, laughed đều đọc /t/.'),
+mc(8,'Choose the word whose underlined part is pronounced differently.','c<u>u</u>t|b<u>u</u>t|p<u>u</u>t|s<u>u</u>n','C','put đọc /ʊ/; cut, but, sun đọc /ʌ/.'),
+mc(9,'Choose the word whose underlined part is pronounced differently.','<u>th</u>ink|<u>th</u>ank|<u>th</u>is|<u>th</u>ree','C','this đọc /ð/ (âm hữu thanh); think, thank, three đọc /θ/.'),
+mc(10,'Choose the word with a different primary stress pattern.','hobby|relax|leisure|village','B','relax /rɪˈlæks/ nhấn âm 2; hobby, leisure, village nhấn âm 1.'),
+mc(11,'Choose the word with a different primary stress pattern.','different|interested|amazing|difficult','C','amazing /əˈmeɪzɪŋ/ nhấn âm 2; different, interested, difficult nhấn âm 1.'),
+mc(12,'Choose the word with a different primary stress pattern.','peaceful|stressful|enjoy|helpful','C','enjoy /ɪnˈdʒɔɪ/ nhấn âm 2; peaceful, stressful, helpful nhấn âm 1.'),
+mc(13,'My cousin is fond of ______ short videos about nature.','make|making|to make|made','B','be fond of + V-ing → fond of making.'),
+mc(14,'We usually ______ the cattle before breakfast.','feed|browse|upload|surf','A','feed the cattle = cho gia súc ăn. browse, upload, surf dùng với internet/tệp.'),
+mc(15,'The roads in this village are ______ than they were ten years ago.','good|better|best|the better','B','So sánh hơn của good là better (+ than).'),
+mc(16,'Teenagers should avoid ______ too much time on their phones.','spend|to spend|spending|spent','C','avoid + V-ing → avoid spending.'),
+mc(17,'My brother is keen ______ playing table tennis.','at|on|for|with','B','Cụm cố định: be keen on + V-ing (say mê, thích).'),
+mc(18,'It is important to balance study ______ relaxation.','with|at|on|from','A','Cụm cố định: balance A with B (cân bằng A với B).'),
+mc(19,'If you feel stressed, you ______ talk to a parent or teacher.','should|shouldn’t to|must to|would to','A','Sau động từ khuyết thiếu dùng V nguyên mẫu không “to”; should = nên (lời khuyên).'),
+mc(20,'The villagers are very ______ and often invite visitors into their homes.','hospitable|crowded|stressful|modern','A','hospitable = hiếu khách, phù hợp với việc mời khách vào nhà.'),
+mc(21,'My sister prefers reading books ______ watching videos.','than|to|from|for','B','prefer V-ing to V-ing → prefers reading … to watching.'),
+mc(22,'There isn’t ______ traffic in our village.','many|much|a few|several','B','traffic là danh từ không đếm được; câu phủ định dùng much.'),
+mc(23,'We stayed at home ______ it was raining heavily.','because|although|but|so','A','because = bởi vì (chỉ nguyên nhân). Mưa to → ở nhà. although/but/so không hợp nghĩa hoặc cấu trúc.'),
+mc(24,'My friends enjoy ______ board games together at weekends.','play|to play|playing|played','C','enjoy + V-ing → enjoy playing.'),
+mc(25,'The countryside is usually ______ than the city centre at night.','quiet|quieter|quietest|more quietest','B','So sánh hơn của tính từ ngắn: quiet → quieter + than.'),
+mc(26,'Minh: “I’m worried about tomorrow’s test.” Lan: “______”','You should review your notes and get enough sleep.|Congratulations!|That’s delicious.|Never speak to me.','A','Minh lo lắng về bài kiểm tra nên lời khuyên ở A là phù hợp nhất.'),
+mc(27,'Some teenagers stay up late; ______, they feel tired at school the next day.','however|therefore|although|but','B','therefore = vì vậy, chỉ kết quả: thức khuya → mệt ở trường.'),
+mc(28,'Blank (28)','by|in|from|at','A','be surrounded by: được bao quanh bởi.'),
+mc(29,'Blank (29)','water|waters|watering|watered','A','help sb + V nguyên mẫu (không “to”) → helped our uncle water vegetables.'),
+mc(30,'Blank (30)','hospitable|rude|nervous|crowded','A','Song song với “friendly” và mang nghĩa tích cực → hospitable (hiếu khách).'),
+mc(31,'Blank (31)','use|using|to use|used','B','spend + thời gian + V-ing → spending hours using our phones.'),
+mc(32,'Blank (32)','with|at|for|from','A','spend time with + người (dành thời gian với gia đình).'),
+mc(33,'Blank (33)','visit|visited|visiting|visits','A','Sau động từ khuyết thiếu can dùng V nguyên mẫu → can visit.'),
+mc(34,'What does this sign mean?','You must turn your phone off.|You should call your friends.|You can play music loudly.|You must charge your phone.','A','“Please switch off your mobile phone” = hãy tắt điện thoại.'),
+mc(35,'What does the notice say?','The club meets on Saturday morning.|Members should bring gloves.|The meeting is in the school hall.|Students must bring a bicycle.','B','Thông báo ghi: “Bring a small pair of gloves.” Họp thứ Sáu 3:30 p.m. tại vườn trường.'),
+mc(36,'What does this sign mean?','You should put rubbish on the ground.|You must not drop rubbish here.|You should collect flowers.|You can leave your bags here.','B','“Do not litter” = không xả rác bừa bãi.'),
+mc(37,'What is the notice mainly about?','A talk about exam stress.|A sports competition.|A countryside trip.|A music concert.','A','Thông báo: “Teen Wellness Talk – Managing Stress Before Exams.”'),
+mc(38,'What is the passage mainly about?','An’s new gardening hobby|An’s school subjects|A trip to the city|Buying vegetables at a market','A','Cả đoạn nói về việc An học trồng rau – một sở thích mới (“A new hobby”).'),
+mc(39,'Who taught An how to garden?','Her teacher|Her grandfather|Her friend|Her brother','B','“An started learning how to grow vegetables with her grandfather.”'),
+mc(40,'What did An learn about gardening?','It requires patience.|It is always easy.|It needs no care.|It is only for adults.','A','“An soon discovered that gardening required patience.”'),
+mc(41,'What happened after a few weeks?','An stopped gardening.|The plants died.|The vegetables began to grow.|An sold her phone.','C','“After a few weeks, the vegetables began to grow.”'),
+mc(42,'How often does An visit the garden now?','Every day|Every Saturday morning|Once a month|Only in summer','B','“Now, she visits her grandfather’s garden every Saturday morning.”')
+];
+/* writing: [n, stem, given beginning, model answer, accepted patterns (on normalised full sentence), explanation] */
+const W=[
+[43,'My sister / be interested in / take photos / nature.','','My sister is interested in taking photos of nature.',[/^my sister is interested in taking (photos|pictures) (of|in) nature$/],'be interested in + V-ing → is interested in taking; photos of nature = ảnh về thiên nhiên.'],
+[44,'Teenagers / should / not / stay up / too late.','','Teenagers should not stay up too late.',[/^teenagers should not stay up too late( at night)?$/],'should not (shouldn’t) + V nguyên mẫu; stay up too late = thức quá khuya.'],
+[45,'The countryside / be / quiet / than / the city.','','The countryside is quieter than the city.',[/^the countryside is (much |far |a lot )?quieter than (the city|in the city)$/],'So sánh hơn của tính từ ngắn: quiet → quieter than; be chia “is” với chủ ngữ số ít.'],
+[46,'Nam / enjoy / help / his grandparents / garden.','','Nam enjoys helping his grandparents in the garden.',[/^nam enjoys helping his grandparents (in|with) (the|their|his) garden$/,/^nam enjoys helping his grandparents (to )?garden$/,/^nam enjoys helping his grandparents with gardening$/],'Chủ ngữ số ít “Nam” → enjoys; enjoy + V-ing → helping; in the garden = trong vườn.'],
+[47,'I like playing chess after school.','I enjoy','I enjoy playing chess after school.',[/^i enjoy playing chess after school$/],'like và enjoy đều đi với V-ing nên giữ nguyên “playing chess after school”.'],
+[48,'The city is more crowded than my village.','My village is','My village is less crowded than the city.',[/^my village is (much )?(less crowded than|not as crowded as) the city$/],'more crowded than ↔ less crowded than / not as crowded as (đảo chủ ngữ, giữ nguyên nghĩa).'],
+[49,'It is a good idea for you to take breaks while studying.','You should','You should take breaks while studying.',[/^you should take (a break|breaks|short breaks) (while|when) (studying|you study|you are studying)$/],'It is a good idea for sb to V = Sb should V.'],
+[50,'Lan spends one hour a day reading online articles.','Lan reads online articles for','Lan reads online articles for one hour a day.',[/^lan reads online articles for (one hour|an hour|1 hour|60 minutes|sixty minutes) (a day|every day|each day|daily|per day)$/],'spend + thời gian + V-ing = V + for + khoảng thời gian.']];
+W.forEach(w=>Q.push({n:w[0],s:w[1],pre:w[2],key:w[3],re:w[4],e:w[5],k:'w'}));
+
+const CLOZE=`<h4>A weekend with my cousins</h4>Last weekend, I visited my cousins who live in a small village. The village is surrounded <b class="g">28</b> rice fields and low green hills. On Saturday morning, we helped our uncle <b class="g">29</b> vegetables in the garden. After lunch, we rode our bikes along a quiet road. The villagers were friendly and <b class="g">30</b>, and several people stopped to talk to us. In the evening, we played board games instead of spending hours <b class="g">31</b> our phones. I slept very well because the village was peaceful. I think a weekend in the countryside is a great way to relax and spend time <b class="g">32</b> family. I hope I can <b class="g">33</b> my cousins again soon.`;
+const READ=`<h4>A new hobby</h4>Two months ago, An started learning how to grow vegetables with her grandfather. At first, she thought gardening was difficult and a little boring. Her grandfather showed her how to prepare the soil, plant seeds and water the young plants. An soon discovered that gardening required patience. She had to check the plants regularly and protect them from insects.<br><br>After a few weeks, the vegetables began to grow. An felt proud when she picked the first tomatoes and gave them to her family. Gardening also helped her spend less time on her phone. Now, she visits her grandfather’s garden every Saturday morning. She says that this hobby is relaxing and teaches her to be responsible. She hopes to grow more kinds of vegetables in the future.`;
+
+const G=[
+{t:'Listening',h:'Part A · Listening',lay:'l',secs:[['','Listen to a conversation between two students. Choose the correct answer A, B, C or D. You will listen TWICE.',[1,2,3,4,5,6]]]},
+{t:'Phonetics',h:'Pronunciation & Stress',lay:'g',secs:[['Part B · Pronunciation','Choose the word whose underlined part is pronounced differently from the others.',[7,8,9]],['Part C · Stress','Choose the word that has a different primary stress pattern.',[10,11,12]]]},
+{t:'Vocabulary',h:'Part D · Vocabulary and Grammar',lay:'g',secs:[['','Choose the best answer A, B, C or D.',[13,14,15,16,17,18,19,20,21,22,23,24,25,26,27]]]},
+{t:'Cloze',h:'Part E · Cloze Test',lay:'s',ctx:CLOZE,secs:[['','Read the passage and choose the best answer for each blank.',[28,29,30,31,32,33]]]},
+{t:'Signs',h:'Part F · Signs and Notices',lay:'g',secs:[['','Read each sign or notice and choose the correct answer.',[34,35,36,37]]]},
+{t:'Reading',h:'Part G · Reading',lay:'s',ctx:READ,secs:[['','Read the passage and choose the correct answer.',[38,39,40,41,42]]]},
+{t:'Writing',h:'Part H · Writing',lay:'w',secs:[['I. Write meaningful sentences','Write meaningful sentences using the words given. You may change the form of the words.',[43,44,45,46]],['II. Rewrite the sentences','Rewrite the sentences without changing their meanings. The beginning is already given — type only the rest of the sentence.',[47,48,49,50]]]}];
+const NG=G.length,byN=n=>Q.find(q=>q.n==n),gOf=n=>G.findIndex(x=>x.secs.some(s=>s[2].includes(n)));
+const qsOf=g=>g.secs.flatMap(s=>s[2]).map(byN);
+const MQ=Q.filter(q=>q.k=='mc'),WQ=Q.filter(q=>q.k=='w');
+
+/* ================= STATE ================= */
+let st={name:'',ans:{},flags:{},cur:0,end:0,t0:0,t1:0,plays:0,done:false};
+let timer=null,dir='fw';
+const answered=q=>st.ans[q.n]!==undefined&&String(st.ans[q.n]).trim()!=='';
+let saveT=null;
+function save(now){clearTimeout(saveT);const go=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};now?go():saveT=setTimeout(go,250)}
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY)||'null');return s&&s.t0?s:null}catch(e){return null}}
+function clearSave(){try{localStorage.removeItem(KEY)}catch(e){}}
+
+/* ================= SCORING ================= */
+const norm=s=>String(s).toLowerCase().replace(/[’‘`]/g,"'").replace(/\bi'm\b/g,'i am').replace(/\bit's\b/g,'it is').replace(/n't\b/g,' not').replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim();
+const status=q=>{if(!answered(q))return'blank';if(q.k=='mc')return st.ans[q.n]===q.a?'ok':'bad';const f=norm((q.pre?q.pre+' ':'')+st.ans[q.n]);return q.re.some(r=>r.test(f))?'ok':'bad'};
+const r2=x=>(Math.round(x*100)/100).toFixed(2);
+
+/* ================= AUDIO ================= */
+const SS='speechSynthesis' in window;let vE=null,vT=null,playing=false,line=-1,rec=null;
+const NICE=/Natural|Online|Neural|Premium|Enhanced/i,FEM=/Libby|Sonia|Hazel|Susan|Serena|Kate|Stephanie|Martha|Female|Fiona|Amy|Emma/i,MAS=/Ryan|Thomas|George|Daniel|Oliver|Arthur|Male|James|Brian/i;
+function pickV(){if(!SS)return;const all=speechSynthesis.getVoices()||[];const gb=all.filter(v=>/^en[-_]GB/i.test(v.lang)).sort((a,b)=>NICE.test(b.name)-NICE.test(a.name)),en=all.filter(v=>/^en/i.test(v.lang));
+vE=gb.find(v=>FEM.test(v.name))||gb.find(v=>!MAS.test(v.name))||gb[0]||en[0]||null;vT=gb.find(v=>MAS.test(v.name)&&v!==vE)||gb.find(v=>v!==vE)||vE}
+if(SS){pickV();speechSynthesis.onvoiceschanged=pickV}
+function voiceInfo(){if(!SS&&!AUDIO_SRC)return'Audio is not supported in this browser. Please use Chrome, Edge or Safari.';if(AUDIO_SRC)return'Recording ready.';pickV();if(!vE)return'No English voice found on this device. Try another browser or device.';return/^en[-_]GB/i.test(vE.lang)?'British English voice ready.':'British voice not installed; using '+vE.name+'.'}
+function say(text,who,cb){if(!SS||!vE){cb&&cb();return}const u=new SpeechSynthesisUtterance(text),v=who=='T'?vT:vE;u.voice=v;u.lang=(v&&v.lang)||'en-GB';u.rate=.9;u.pitch=(vE===vT)?(who=='T'?.8:1.18):1;let d=false;const f=()=>{if(!d){d=true;cb&&cb()}};u.onend=f;u.onerror=f;speechSynthesis.speak(u)}
+function lui(){const b=$('#aplay');if(!b)return;const left=2-st.plays;b.disabled=playing||left<=0||(!SS&&!AUDIO_SRC);b.textContent=playing?'Playing…':left<=0?'Recording finished':st.plays?'▶ Play again (2 of 2)':'▶ Play recording (1 of 2)';$('#aeq').classList.toggle('on',playing);$('#acnt').textContent='Played '+st.plays+' of 2';$('#afill').style.width=(playing&&!AUDIO_SRC?(line+1)/SCRIPT.length*100:(st.plays>0?100:0))+'%';$('#amsg').textContent=voiceInfo()}
+function aplay(){if(playing||st.plays>=2)return;playing=true;line=-1;lui();
+ const fin=()=>{playing=false;st.plays++;save(true);lui()};
+ if(AUDIO_SRC){rec=rec||new Audio(AUDIO_SRC);rec.currentTime=0;rec.onended=fin;rec.play().catch(()=>{playing=false;lui()});return}
+ if(!SS||!vE){playing=false;lui();return}
+ speechSynthesis.cancel();let i=0;const nx=()=>{if(!playing)return;if(i>=SCRIPT.length)return setTimeout(fin,300);line=i;lui();const s=SCRIPT[i++];say(s[1],s[0],()=>setTimeout(nx,420))};setTimeout(nx,350)}
+function stopAudio(){playing=false;if(SS)speechSynthesis.cancel();if(rec)rec.pause()}
+const audioCard=()=>`<div class="aud"><div class="eq" id="aeq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div><b>Listening recording</b><div class="sm">Peter and Hoa talk about hobbies, countryside life and school pressure. You can listen <b>twice</b>.</div><div class="abar"><i id="afill"></i></div><div class="sm"><span id="acnt"></span> · <span id="amsg"></span></div></div><button id="aplay" class="btn pri" type="button">▶ Play recording (1 of 2)</button></div>`;
+
+/* ================= QUESTION RENDER ================= */
+function stem(q){if(SG[q.n])return esc(q.s).replace(/&lt;(\/?)u&gt;/g,'<$1u>');if(q.n>=28&&q.n<=33)return'Blank <b>('+q.n+')</b>';return q.s.replace(/______/g,'<span class="bl">______</span>')}
+function qcard(q,rv){
+  const v=st.ans[q.n],s=rv?status(q):'',id=(rv?'r':'q')+q.n;
+  const badge=rv?`<span class="badge ${s}">${s=='ok'?'✓ Correct':s=='bad'?'✗ Incorrect':'– Unanswered'}</span>`:`<button class="flag" type="button" data-f="${q.n}" aria-pressed="${!!st.flags[q.n]}" title="Flag for review" aria-label="Flag question ${q.n} for review">⚑</button>`;
+  let h=`<article class="q ${rv?'r-'+s:(answered(q)?'done':'')}" id="${id}"><div class="qh"><span class="qn">${q.n}</span><div class="qt">${q.k=='w'?esc(q.s):stem(q)}</div>${badge}</div>`;
+  if(q.k=='w'){
+    if(!rv)return h+`<div class="fld">${q.pre?`<span class="pf">${esc(q.pre)}</span>`:''}<input type="text" data-n="${q.n}" value="${esc(v??'')}" autocomplete="off" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="${q.pre?'Type the rest of the sentence':'Write your sentence here'}" aria-label="Question ${q.n}${q.pre?', after '+esc(q.pre):''}"></div></article>`;
+    return h+`<div class="ansbox"><div class="you ${s}"><small>Your answer</small>${answered(q)?esc((q.pre?q.pre+' ':'')+String(v).trim()):'(no answer)'}</div><div><small>Model answer</small><b>${esc(q.key)}</b></div></div><div class="exp"><b>Giải thích:</b> ${esc(q.e)}</div></article>`;
+  }
+  if(SG[q.n])h+=`<div class="sign">${SG[q.n]}</div>`;
+  h+='<div class="opts">'+q.o.map((o,i)=>{
+    if(!rv)return`<label class="opt"><input type="radio" name="r${q.n}" data-n="${q.n}" value="${i}" ${v===i?'checked':''}><span class="lt">${L[i]}</span><span>${o}</span></label>`;
+    const c=i===q.a,w=v===i&&!c;
+    return`<div class="opt rv ${c?'c':''} ${w?'w':''}"><span class="lt">${L[i]}</span><span>${o}</span>${c?'<span class="tag">✓ Correct</span>':w?'<span class="tag">Your answer</span>':''}</div>`}).join('')+'</div>';
+  if(rv)h+=`<div class="exp"><b>Giải thích:</b> ${esc(q.e)}</div>`;
+  return h+'</article>';
+}
+
+/* ================= EXAM FLOW ================= */
+function setHH(){const t=$('.top');if(t)document.documentElement.style.setProperty('--hh',t.offsetHeight+'px')}
+addEventListener('resize',setHH);
+function tabsR(){$('#tabs').innerHTML=G.map((x,i)=>{const qs=qsOf(x),d=qs.filter(answered).length;return`<button type="button" data-p="${i}" class="${i==st.cur?'on':''} ${d==qs.length?'full':''}" ${i==st.cur?'aria-current="true"':''}>${x.t}<small>${d}/${qs.length}</small></button>`}).join('');const on=$('#tabs .on');on&&on.scrollIntoView({inline:'center',block:'nearest'})}
+function progress(){const n=Q.filter(answered).length;$('#prog').textContent=n+'/50';$('#pb').style.width=n/50*100+'%';$('#pbt').textContent=n+' of 50 answered';tabsR()}
+function show(g,back){st.cur=g;const gr=G[g];dir=back?'bk':'fw';
+  const rg=gr.secs.flatMap(s=>s[2]);
+  const secs=gr.secs.map(s=>`<div class="sec">${s[0]?`<h3>${s[0]}</h3>`:''}<p>${s[1]}</p></div>${gr.lay=='l'?audioCard():''}<div class="${gr.lay=='g'||gr.lay=='l'?'grid2':'col'}">${s[2].map(n=>qcard(byN(n))).join('')}</div>`).join('');
+  $('#body').innerHTML=`<div class="stage ${back?'bk':''}"><div class="ph"><div class="eyebrow" style="color:var(--p)">Section ${g+1} of ${NG} · Questions ${rg[0]}–${rg[rg.length-1]}</div><h2>${gr.h}</h2></div>`+(gr.lay=='s'?`<div class="split"><aside class="pass" tabindex="0" aria-label="Reading text">${gr.ctx}</aside><div>${secs}</div></div>`:secs)+'</div>';
+  if(gr.lay=='l'){$('#aplay').onclick=aplay;lui()}
+  $('#prev').style.visibility=g==0?'hidden':'visible';$('#next').style.visibility=g==NG-1?'hidden':'visible';
+  progress();setHH();save()}
+function mapR(){const rows=G.map((g,i)=>`<div class="mh">${g.t}</div><div class="mapg">${qsOf(g).map(q=>`<button type="button" data-j="${q.n}" class="${answered(q)?'d':''} ${st.flags[q.n]?'f':''} ${i==st.cur?'cur':''}" aria-label="Question ${q.n}${answered(q)?', answered':''}${st.flags[q.n]?', flagged':''}">${q.n}</button>`).join('')}</div>`).join('');$('#mapBody').innerHTML=rows}
+function jump(n){show(gOf(n));requestAnimationFrame(()=>{const el=document.getElementById('q'+n);el&&el.scrollIntoView({block:'center'});const i=el&&el.querySelector('input');i&&i.type=='text'&&i.focus({preventScroll:true})})}
+
+function startExam(name){
+  st={name,ans:{},flags:{},cur:0,end:Date.now()+TIME*60000,t0:Date.now(),t1:0,plays:0,done:false};save(true);enterExam()}
+function enterExam(){
+  $('#start').classList.add('hide');$('#res').classList.add('hide');$('#examUI').classList.remove('hide');document.body.classList.add('ex');
+  clearInterval(timer);timer=setInterval(tick,500);tick();show(Math.min(st.cur||0,NG-1));scrollTo(0,0)}
+function tick(){const r=Math.max(0,st.end-Date.now()),s=Math.ceil(r/1000);
+  $('#tm').textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+  $('#tc').style.strokeDashoffset=113.1*(1-r/(TIME*60000));$('#tmw').classList.toggle('low',s<=300&&s>0);
+  if(!s)finish(true)}
+function finish(auto){
+  if(st.done)return;st.done=true;st.t1=Date.now();clearInterval(timer);stopAudio();save(true);
+  document.querySelectorAll('dialog[open]').forEach(d=>d.close());
+  $('#examUI').classList.add('hide');document.body.classList.remove('ex');drawResults();scrollTo(0,0);
+  if(auto)msg('Time is up','Your answers have been submitted automatically.')}
+function msg(h,t){$('#dMsgH').textContent=h;$('#dMsgT').textContent=t;const d=$('#dMsg');d.open||d.showModal()}
+
+/* ================= RESULTS ================= */
+const fmt=t=>new Date(t).toLocaleString('en-GB');
+const dur=()=>{const m=Math.max(0,Math.round((st.t1-st.t0)/1000));return Math.floor(m/60)+' min '+m%60+' s'};
+const asTxt=q=>{const v=st.ans[q.n];return!answered(q)?'(no answer)':q.k=='w'?(q.pre?q.pre+' ':'')+String(v).trim():L[v]+'. '+strip(q.o[v])};
+const csTxt=q=>q.k=='w'?q.key:L[q.a]+'. '+strip(q.o[q.a]);
+let R;
+function compute(){
+  const mcOk=MQ.filter(q=>status(q)=='ok').length,wOk=WQ.filter(q=>status(q)=='ok').length;
+  const ok=mcOk+wOk,bad=Q.filter(q=>status(q)=='bad').length,bl=Q.filter(q=>status(q)=='blank').length;
+  const mp=mcOk*.2,wp=wOk*.2,tot=mp+wp;
+  R={mcOk,wOk,ok,bad,bl,mp,wp,tot,att:50-bl,secs:G.map(g=>{const qs=qsOf(g);return{t:g.t,c:qs.filter(q=>status(q)=='ok').length,n:qs.length}})}}
+function drawResults(){
+  compute();const C=2*Math.PI*76,off=C*(1-R.tot/10);
+  const pct=x=>Math.round(x/50*100);
+  const verdict=R.tot>=9?'Excellent work!':R.tot>=8?'Very good result':R.tot>=6.5?'Good — keep practising':R.tot>=5?'Pass — review the weak sections':'Needs more practice';
+  let h=`<div class="rhero rv"><div class="ring"><svg width="176" height="176" viewBox="0 0 176 176" aria-hidden="true"><circle cx="88" cy="88" r="76" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="12"/><circle id="rc" cx="88" cy="88" r="76" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}" style="transition:stroke-dashoffset 1.2s cubic-bezier(.2,.8,.2,1)"/></svg><b id="tn">0.00</b><small>OUT OF 10</small></div>
+  <div><div class="eyebrow" style="color:#CDBBFF">English 8 Mid-term Test · Version 2 · Results</div><h2>${esc(st.name||'(name not entered)')}</h2><p>Questions 1–42: <b>${r2(R.mp)}</b> / 8.40 &nbsp;·&nbsp; Writing: <b>${r2(R.wp)}</b> / 1.60</p><span class="verdict">${verdict}</span>
+  <div class="meta"><div><b>${fmt(st.t0)}</b>Started</div><div><b>${fmt(st.t1)}</b>Submitted</div><div><b>${dur()}</b>Time used</div></div></div></div>
+  <div class="kpis rv"><div class="kpi ok"><span>Correct</span><b>${R.ok}</b><small>${pct(R.ok)}% of 50</small></div><div class="kpi bad"><span>Incorrect</span><b>${R.bad}</b><small>${pct(R.bad)}% of 50</small></div><div class="kpi blank"><span>Unanswered</span><b>${R.bl}</b><small>${pct(R.bl)}% of 50</small></div><div class="kpi pc"><span>Completion</span><b>${pct(R.att)}%</b><small>${R.att} of 50 attempted</small></div></div>
+  <div class="card rv"><h2>Results by section</h2><div class="bars">${R.secs.map(s=>`<div class="br"><span>${s.t}</span><div><i data-w="${s.c/s.n*100}"></i></div><b>${s.c}/${s.n}</b></div>`).join('')}</div></div>
+  <div class="ctl"><button class="btn pri" id="dl" type="button">⬇ Download PDF report</button><button class="btn sec" id="prt" type="button">Print</button><button class="btn sec" id="retake" type="button">↻ Retake the test</button></div>
+  <h2 style="margin:26px 0 0;font-size:26px;letter-spacing:-.03em">Review your answers</h2>
+  <div class="chips" id="chips"><button class="on" data-fl="all" type="button">All 50</button><button data-fl="bad" type="button">Incorrect (${R.bad})</button><button data-fl="blank" type="button">Unanswered (${R.bl})</button><button data-fl="ok" type="button">Correct (${R.ok})</button></div>
+  <div id="rev"></div>`;
+  $('#res').innerHTML=h;$('#res').classList.remove('hide');review('all');
+  requestAnimationFrame(()=>{$('#rc').style.strokeDashoffset=off;document.querySelectorAll('.br i').forEach(i=>i.style.width=i.dataset.w+'%');
+    const el=$('#tn');if(matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=r2(R.tot);return}
+    const s0=performance.now(),f=t=>{const p=Math.min(1,(t-s0)/1200);el.textContent=r2(R.tot*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)});
+}
+function review(fl){
+  document.querySelectorAll('#chips button').forEach(b=>b.classList.toggle('on',b.dataset.fl==fl));
+  let out='',any=false;
+  G.forEach(g=>{
+    const qs=qsOf(g).filter(q=>fl=='all'||status(q)==fl);if(!qs.length)return;any=true;
+    out+=`<div class="rsec"><h3>${g.h}</h3></div>`;
+    if(g.lay=='l')out+=`<details class="tr-box"><summary>Show the listening transcript</summary>${SCRIPT.map(s=>`<p><b>${NAME[s[0]]}:</b> ${esc(s[1])}</p>`).join('')}</details>`;
+    if(g.lay=='s')out+=`<aside class="pass static">${g.ctx}</aside>`;
+    out+=`<div class="${g.lay=='w'?'col':'grid2'}">${qs.map(q=>qcard(q,true)).join('')}</div>`});
+  $('#rev').innerHTML=any?out:'<div class="empty">No questions in this category. 🎉</div>'}
+
+/* ================= PDF (A4 pages drawn on canvas → JPEG → PDF) ================= */
+function makePDF(){
+  const PW=1240,PH=1754,pages=[];let c,y;
+  const np=()=>{const cv=document.createElement('canvas');cv.width=PW;cv.height=PH;c=cv.getContext('2d');c.fillStyle='#fff';c.fillRect(0,0,PW,PH);
+    const g=c.createLinearGradient(0,0,PW,0);g.addColorStop(0,'#2A1170');g.addColorStop(1,'#5B2BD0');c.fillStyle=g;c.fillRect(0,0,PW,118);
+    c.fillStyle='#fff';c.font=`800 28px ${FONT}`;c.textAlign='left';c.fillText('AURELIA ACADEMY',70,72);
+    c.fillStyle='#DDD6FE';c.font=`500 21px ${FONT}`;c.textAlign='right';c.fillText('English 8 Mid-term Test · Version 2',PW-70,70);
+    c.fillStyle='#8B82A5';c.font=`400 17px ${FONT}`;c.textAlign='center';c.fillText('Contact: 0964 964 264 | Ms. Angie · © 2026 Aurelia Academy. All rights reserved.',PW/2,PH-46);c.textAlign='left';pages.push(cv);y=180};
+  const need=h=>{if(y+h>PH-110)np()};
+  const fit=(t,m)=>{if(c.measureText(t).width<=m)return t;while(t.length>1&&c.measureText(t+'…').width>m)t=t.slice(0,-1);return t+'…'};
+  const wrap=(t,m)=>{const o=[];String(t).split('\n').forEach(p=>{let l='';p.split(' ').forEach(w=>{const tt=l?l+' '+w:w;if(c.measureText(tt).width>m&&l){o.push(l);l=w}else l=tt});o.push(l)});return o};
+  const H2=t=>{need(90);y+=18;c.fillStyle='#3B1790';c.font=`800 32px ${FONT}`;c.fillText(t,70,y);y+=14;c.fillStyle='#7C4DEB';c.fillRect(70,y,90,4);y+=40};
+  const P=(t,o={})=>{c.font=`${o.w||500} ${o.s||23}px ${FONT}`;c.fillStyle=o.col||'#1E1238';wrap(t,o.m||PW-140).forEach(l=>{need(38);c.fillText(l,o.x||70,y);y+=o.lh||35})};
+  const ROW=(cells,xs,o={})=>{need(48);if(o.bg){c.fillStyle=o.bg;c.fillRect(70,y-30,PW-140,46)}c.font=`${o.w||500} 21px ${FONT}`;cells.forEach((t,i)=>{c.fillStyle=(o.cols&&o.cols[i])||'#1E1238';c.fillText(fit(String(t),(xs[i+1]||PW-70)-xs[i]-14),xs[i],y)});y+=46};
+  np();
+  c.fillStyle='#1E1238';c.font=`800 42px ${FONT}`;c.fillText('Results Report',70,y);y+=52;
+  [['Candidate',st.name||'(name not entered)'],['Started',fmt(st.t0)],['Submitted',fmt(st.t1)+'  ('+dur()+')']].forEach(r=>{c.fillStyle='#675C8C';c.font=`500 23px ${FONT}`;c.fillText(r[0],70,y);c.fillStyle='#1E1238';c.font=`700 23px ${FONT}`;c.fillText(r[1],270,y);y+=38});y+=14;
+  [['Total',r2(R.tot)+' / 10','#3B1790'],['Questions 1–42',r2(R.mp)+' / 8.40','#5B2BD0'],['Writing',r2(R.wp)+' / 1.60','#7C4DEB']].forEach((b,i)=>{const x=70+i*368;c.fillStyle='#EEE8FF';c.beginPath();c.roundRect(x,y,340,130,18);c.fill();c.fillStyle='#675C8C';c.font=`600 19px ${FONT}`;c.fillText(b[0],x+24,y+38);c.fillStyle=b[2];c.font=`800 40px ${FONT}`;c.fillText(b[1],x+24,y+95)});y+=170;
+  P(`Correct ${R.ok}  ·  Incorrect ${R.bad}  ·  Unanswered ${R.bl}  ·  Completion ${Math.round(R.att/50*100)}%`,{w:700});y+=10;
+  H2('Results by section');
+  R.secs.forEach(s=>{need(50);c.font=`500 21px ${FONT}`;c.fillStyle='#1E1238';c.fillText(s.t,70,y);c.fillStyle='#EEE8FF';c.fillRect(520,y-20,520,18);c.fillStyle='#5B2BD0';c.fillRect(520,y-20,520*s.c/s.n,18);c.fillStyle='#1E1238';c.font=`700 21px ${FONT}`;c.fillText(s.c+' / '+s.n,1070,y);y+=48});
+  H2('Multiple-choice answers (Questions 1–42)');
+  const xs=[70,150,640,1010];ROW(['Q','Your answer','Correct answer','Result'],xs,{w:700,bg:'#EEE8FF'});
+  MQ.forEach((q,i)=>{const t=status(q);ROW([q.n,asTxt(q),csTxt(q),t=='ok'?'Correct':t=='bad'?'Incorrect':'Unanswered'],xs,{bg:i%2?'#FAF8FF':null,cols:[null,null,null,t=='ok'?'#0F7F5A':t=='bad'?'#C12E4A':'#A86A0B']})});
+  H2('Writing (Questions 43–50)');
+  WQ.forEach(q=>{const t=status(q);need(170);P(q.n+'. '+q.s,{w:600,s:21,col:'#675C8C'});P('Student: '+asTxt(q),{s:22});P('Model answer: '+q.key,{s:22,col:'#3B1790',w:700});P((t=='ok'?'Correct':t=='bad'?'Incorrect':'Unanswered')+' · '+(t=='ok'?'0.20':'0.00')+' / 0.20',{s:20,w:700,col:t=='ok'?'#0F7F5A':t=='bad'?'#C12E4A':'#A86A0B'});y+=14});
+  const imgs=pages.map(cv=>{const d=cv.toDataURL('image/jpeg',.92).split(',')[1],bin=atob(d),u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return{d:u,w:cv.width,h:cv.height}});
+  const enc=new TextEncoder(),ch=[],off=[];let pos=0;const add=d=>{const b=typeof d=='string'?enc.encode(d):d;ch.push(b);pos+=b.length};
+  const obj=(i,f)=>{off[i]=pos;add(i+' 0 obj\n');f();add('\nendobj\n')},n=imgs.length;add('%PDF-1.4\n');
+  obj(1,()=>add('<< /Type /Catalog /Pages 2 0 R >>'));obj(2,()=>add('<< /Type /Pages /Kids ['+imgs.map((_,k)=>(3+k*3)+' 0 R').join(' ')+'] /Count '+n+' >>'));
+  imgs.forEach((im,k)=>{const p=3+k*3,s='q 595.28 0 0 841.89 0 0 cm /Im0 Do Q';obj(p,()=>add(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /XObject << /Im0 ${p+2} 0 R >> >> /Contents ${p+1} 0 R >>`));obj(p+1,()=>add(`<< /Length ${s.length} >>\nstream\n${s}\nendstream`));obj(p+2,()=>{add(`<< /Type /XObject /Subtype /Image /Width ${im.w} /Height ${im.h} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${im.d.length} >>\nstream\n`);add(im.d);add('\nendstream')})});
+  const xr=pos,tt=3+n*3;add(`xref\n0 ${tt}\n0000000000 65535 f \n`);for(let i=1;i<tt;i++)add(String(off[i]).padStart(10,'0')+' 00000 n \n');add(`trailer\n<< /Size ${tt} /Root 1 0 R >>\nstartxref\n${xr}\n%%EOF`);
+  return new Blob(ch,{type:'application/pdf'})}
+async function downloadPDF(){
+  const b=$('#dl');b.disabled=true;b.textContent='Preparing…';
+  try{if(document.fonts&&document.fonts.load){await Promise.race([Promise.all(['500','600','700','800'].map(w=>document.fonts.load(w+' 22px Montserrat'))),new Promise(r=>setTimeout(r,1500))])}}catch(e){}
+  try{const blob=makePDF(),a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download='English8-Midterm-V2_'+(st.name||'student').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/gi,'d').replace(/[^\w]+/g,'_')+'.pdf';
+    document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)}
+  catch(e){msg('PDF error','The PDF could not be created. Please use the Print button and choose “Save as PDF”.')}
+  b.disabled=false;b.textContent='⬇ Download PDF report'}
+
+/* ================= EVENTS ================= */
+document.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.hasAttribute('data-close')){b.closest('dialog').close();return}
+  if(b.dataset.p!==undefined){const p=+b.dataset.p;if(p!==st.cur){show(p,p<st.cur);scrollTo(0,0)}return}
+  if(b.id=='prev'){show(st.cur-1,true);scrollTo(0,0)}
+  else if(b.id=='next'){show(st.cur+1);scrollTo(0,0)}
+  else if(b.dataset.f){const n=b.dataset.f;st.flags[n]=!st.flags[n];if(!st.flags[n])delete st.flags[n];b.setAttribute('aria-pressed',!!st.flags[n]);save()}
+  else if(b.dataset.j){$('#dMap').close();jump(+b.dataset.j)}
+  else if(b.id=='mapBtn'){mapR();$('#dMap').showModal()}
+  else if(b.id=='sub'){const em=Q.filter(q=>!answered(q)).length;$('#dSubT').textContent=(em?`You have ${em} unanswered question${em>1?'s':''}. `:'You have answered all 50 questions. ')+'You will not be able to change your answers after submitting.';$('#dSub').showModal()}
+  else if(b.id=='dSubOk'){finish(false)}
+  else if(b.dataset.fl){review(b.dataset.fl)}
+  else if(b.id=='dl'){downloadPDF()}
+  else if(b.id=='prt'){print()}
+  else if(b.id=='retake'){$('#dRe').showModal()}
+  else if(b.id=='dReOk'){$('#dRe').close();retake()}
+  else if(b.id=='rsStart'){const s=load();if(s){st=s;if(Date.now()>=st.end&&!st.done){enterExam()}else enterExam()}}
+  else if(b.id=='rsNew'){clearSave();$('#resume').classList.add('hide');$('#nm').focus()}
+});
+document.addEventListener('input',e=>{const t=e.target;if(st.done||!t.dataset||!t.dataset.n)return;
+  st.ans[t.dataset.n]=t.type=='radio'?+t.value:t.value;
+  const card=t.closest('.q');card&&card.classList.toggle('done',answered(byN(t.dataset.n)));progress();save()});
+document.addEventListener('keydown',e=>{if(e.key=='Enter'&&e.target.matches&&e.target.matches('.fld input'))e.preventDefault()});
+$('#form').addEventListener('submit',e=>{e.preventDefault();const nm=$('#nm');const v=nm.value.trim();
+  if(!v){nm.classList.add('err');nm.focus();nm.placeholder='Please enter your name and class';return}
+  nm.classList.remove('err');startExam(v)});
+$('#nm').addEventListener('input',()=>$('#nm').classList.remove('err'));
+function retake(){stopAudio();clearInterval(timer);clearSave();st={name:'',ans:{},flags:{},cur:0,end:0,t0:0,t1:0,plays:0,done:false};
+  $('#res').classList.add('hide');$('#res').innerHTML='';$('#examUI').classList.add('hide');document.body.classList.remove('ex');
+  $('#start').classList.remove('hide');$('#resume').classList.add('hide');$('#nm').value='';scrollTo(0,0)}
+addEventListener('pagehide',()=>{if(SS)speechSynthesis.cancel();save(true)});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)save(true)});
+
+/* ================= BOOT ================= */
+(function boot(){
+  const s=load();if(!s)return;
+  if(s.done){st=s;$('#start').classList.add('hide');drawResults();return}
+  const left=s.end-Date.now(),n=Object.keys(s.ans).filter(k=>String(s.ans[k]).trim()!=='').length;
+  const r=$('#resume');r.classList.remove('hide');
+  r.innerHTML=left>0?`<h2>Welcome back${s.name?', '+esc(s.name.split(' – ')[0]):''}</h2><p class="sub">You have an unfinished test: ${n} of 50 answered, ${Math.ceil(left/60000)} min left.</p><div class="row"><button class="btn pri" id="rsStart" type="button">Continue test</button><button class="btn sec" id="rsNew" type="button">Start over</button></div>`
+   :`<h2>Time ran out</h2><p class="sub">Your previous attempt (${n} of 50 answered) has expired. Open it to see the result.</p><div class="row"><button class="btn pri" id="rsStart" type="button">See my result</button><button class="btn sec" id="rsNew" type="button">Start over</button></div>`;
+})();
+</script>
+</body>
+</html>
